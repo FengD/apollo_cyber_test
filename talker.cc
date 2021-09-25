@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     msg->set_a(Time::Now().ToNanosecond());
     msg->set_b(seq);
     talker->Write(msg);
-    AINFO << "talker sent a message! No. " << seq;
+    std::cout << "talker sent a message! No. " << seq << std::endl;
     seq++;
     rate.Sleep();
   }

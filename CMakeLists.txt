@@ -29,3 +29,15 @@ target_link_libraries(${PROJECT_NAME}_talker
     cyber
     fastrtps
 )
+
+add_executable(${PROJECT_NAME}_listener listener.cc ${PROTO_SRCS} ${PROTO_HDRS})
+target_link_libraries(${PROJECT_NAME}_listener 
+    gflags
+    glog
+    pthread
+    rt
+    ${PROTOBUF_LIBRARIES}
+    sensor_proto
+    cyber
+    fastrtps
+)
