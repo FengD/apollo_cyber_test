@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 2.8)
 
 project(cyber_test)
 
-include_directories(/apollo/cyber/include)
+include_directories(/usr/local/apollo/cyber/include)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-link_directories(/apollo/cyber/lib)
+link_directories(/usr/local/apollo/cyber/lib)
 
 find_package(Protobuf REQUIRED)
 if(PROTOBUF_FOUND)
@@ -25,7 +25,6 @@ target_link_libraries(${PROJECT_NAME}_talker
     pthread
     rt
     ${PROTOBUF_LIBRARIES}
-    sensor_proto
     cyber
     fastrtps
 )
@@ -37,7 +36,6 @@ target_link_libraries(${PROJECT_NAME}_listener
     pthread
     rt
     ${PROTOBUF_LIBRARIES}
-    sensor_proto
     cyber
     fastrtps
 )
