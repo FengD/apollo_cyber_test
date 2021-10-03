@@ -2,10 +2,6 @@ cmake_minimum_required(VERSION 2.8)
 
 project(cyber_test)
 
-include_directories(/usr/local/apollo/cyber/include)
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
-link_directories(/usr/local/apollo/cyber/lib)
-
 find_package(Protobuf REQUIRED)
 if(PROTOBUF_FOUND)
     message(STATUS "protobuf library found")
@@ -15,8 +11,14 @@ endif()
 
 file(GLOB proto_srcs *.proto)
 set(Protobuf_USE_STATIC_LIBS on)
-
 protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${proto_srcs})
+
+set(CYBER_PATH /usr/local/apollo/cyber)
+link_directories(${CYBER_PATH}/lib/)
+include_directories(
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CYBER_PATH}/include/
+)
 
 add_executable(${PROJECT_NAME}_talker talker.cc ${PROTO_SRCS} ${PROTO_HDRS})
 target_link_libraries(${PROJECT_NAME}_talker 
