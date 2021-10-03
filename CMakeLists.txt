@@ -24,8 +24,6 @@ add_executable(${PROJECT_NAME}_talker talker.cc ${PROTO_SRCS} ${PROTO_HDRS})
 target_link_libraries(${PROJECT_NAME}_talker 
     gflags
     glog
-    pthread
-    rt
     ${PROTOBUF_LIBRARIES}
     cyber
     fastrtps
@@ -35,8 +33,6 @@ add_executable(${PROJECT_NAME}_listener listener.cc ${PROTO_SRCS} ${PROTO_HDRS})
 target_link_libraries(${PROJECT_NAME}_listener 
     gflags
     glog
-    pthread
-    rt
     ${PROTOBUF_LIBRARIES}
     cyber
     fastrtps
